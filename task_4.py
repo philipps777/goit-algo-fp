@@ -2,6 +2,7 @@ import uuid
 import networkx as nx
 import matplotlib.pyplot as plt
 
+
 class HeapNode:
     def __init__(self, key, index, color="skyblue"):
         self.left = None
@@ -11,20 +12,25 @@ class HeapNode:
         self.color = color
         self.id = str(uuid.uuid4())
 
+
 def add_heap_edges(graph, node, pos, x=0, y=0, layer=1):
     if node is not None:
-        graph.add_node(node.id, color=node.color, label=f"{node.val}\n({node.index})")
+        graph.add_node(node.id, color=node.color,
+                       label=f"{node.val}\n({node.index})")
         if node.left:
             graph.add_edge(node.id, node.left.id)
             l = x - 1 / 2 ** layer
             pos[node.left.id] = (l, y - 1)
-            l = add_heap_edges(graph, node.left, pos, x=l, y=y - 1, layer=layer + 1)
+            l = add_heap_edges(graph, node.left, pos, x=l,
+                               y=y - 1, layer=layer + 1)
         if node.right:
             graph.add_edge(node.id, node.right.id)
             r = x + 1 / 2 ** layer
             pos[node.right.id] = (r, y - 1)
-            r = add_heap_edges(graph, node.right, pos, x=r, y=y - 1, layer=layer + 1)
+            r = add_heap_edges(graph, node.right, pos, x=r,
+                               y=y - 1, layer=layer + 1)
     return graph
+
 
 def draw_heap(heap_root):
     heap = nx.DiGraph()
@@ -35,8 +41,10 @@ def draw_heap(heap_root):
     labels = {node[0]: node[1]['label'] for node in heap.nodes(data=True)}
 
     plt.figure(figsize=(10, 7))
-    nx.draw(heap, pos=pos, labels=labels, arrows=False, node_size=2500, node_color=colors)
+    nx.draw(heap, pos=pos, labels=labels, arrows=False,
+            node_size=2500, node_color=colors)
     plt.show()
+
 
 def heapify(arr, is_max_heap=True):
     nodes = [HeapNode(val, index) for index, val in enumerate(arr)]
@@ -52,6 +60,7 @@ def heapify(arr, is_max_heap=True):
 
     return nodes[0] if nodes else None
 
+
 if __name__ == "__main__":
     heap_arr_max = [4, 12, 1, 8, 3, 11, 2, 13, 9, 5, 6, 0, 10, 7, 14]
     heap_arr_max.sort(reverse=True)
@@ -62,4 +71,3 @@ if __name__ == "__main__":
     heap_arr_min.sort()
     heap_root_min = heapify(heap_arr_min, is_max_heap=False)
     draw_heap(heap_root_min)
-
