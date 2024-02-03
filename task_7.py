@@ -36,8 +36,10 @@ def plot_probabilities(probabilities):
     plt.show()
 
 
-num_rolls = 100000
+num_rolls = 1000000
 dice_results = simulate_dice_rolls(num_rolls)
 probabilities = calculate_probabilities(dice_results)
 print_probabilities(probabilities)
 plot_probabilities(probabilities)
+
+

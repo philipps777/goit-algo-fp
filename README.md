@@ -38,25 +38,29 @@
 
 ### Дерева, алгоритм Дейкстри
 
+### Граф метро Берліну
+
 ![Berlin_metro](images/Berlin_metro.png)
-Найкоротши шляхі від початкової вершини до всіх інших
-| Station | Shortest Distance |
-|--------------------|-------------------|
-| Alexanderplatz | 0 |
-| Brandenburger Tor | 3 |
-| Zoologischer Garten | 7 |
-| Potsdamer Platz | 12 |
-| Spittelmarkt | 17 |
-| Friedrichstraße | 20 |
-| Hackescher Markt | 22 |
-| Kurfürstendamm | 28 |
-| Wittenbergplatz | 32 |
-| Schönhauser Allee | 39 |
-| Schlesisches Tor | 38 |
-| Tierpark | 43 |
-| Frankfurter Allee | 46 |
-| Hermannplatz | 52 |
-| Märkisches Museum | 56 |
+
+### Найкоротши шляхі від початкової вершини до всіх інших
+
+| Station             | Shortest Distance |
+| ------------------- | ----------------- |
+| Alexanderplatz      | 0                 |
+| Brandenburger Tor   | 3                 |
+| Zoologischer Garten | 7                 |
+| Potsdamer Platz     | 12                |
+| Spittelmarkt        | 17                |
+| Friedrichstraße     | 20                |
+| Hackescher Markt    | 22                |
+| Kurfürstendamm      | 28                |
+| Wittenbergplatz     | 32                |
+| Schönhauser Allee   | 39                |
+| Schlesisches Tor    | 38                |
+| Tierpark            | 43                |
+| Frankfurter Allee   | 46                |
+| Hermannplatz        | 52                |
+| Märkisches Museum   | 56                |
 
 ## Task 4
 
@@ -112,17 +116,17 @@
 
 | Сума | Імовірність   |
 | ---- | ------------- |
-| 2    | 2.71% (1/36)  |
-| 3    | 5.44% (1/36)  |
-| 4    | 8.42% (1/36)  |
-| 5    | 10.95% (1/36) |
-| 6    | 13.96% (1/36) |
-| 7    | 16.79% (1/36) |
-| 8    | 13.95% (1/36) |
-| 9    | 11.08% (1/36) |
-| 10   | 8.28% (1/36)  |
-| 11   | 5.53% (1/36)  |
-| 12   | 2.88% (1/36)  |
+| 2    | 2.79% (1/36)  |
+| 3    | 5.56% (1/36)  |
+| 4    | 8.38% (1/36)  |
+| 5    | 11.12% (1/36) |
+| 6    | 13.88% (1/36) |
+| 7    | 16.65% (1/36) |
+| 8    | 13.89% (1/36) |
+| 9    | 11.10% (1/36) |
+| 10   | 8.34% (1/36)  |
+| 11   | 5.52% (1/36)  |
+| 12   | 2.78% (1/36)  |
 
 ### Висновки:
 
