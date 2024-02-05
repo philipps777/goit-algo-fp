@@ -1,3 +1,4 @@
+
 class Node:
     def __init__(self, data=None):
         self.data = data
@@ -46,7 +47,7 @@ class LinkedList:
         prev.next = cur.next
         cur = None
 
-    def search_element(self, data: int) -> Node or None:
+    def search_element(self, data: int) -> Node | None:
         cur = self.head
         while cur:
             if cur.data == data:
@@ -63,35 +64,65 @@ class LinkedList:
     def reverse_list(self):
         prev = None
         current = self.head
-        while current:
+
+        while current is not None:
             next_node = current.next
             current.next = prev
             prev = current
             current = next_node
+
         self.head = prev
 
-    def merge_sorted_lists(self, other_list):
-        merged_list = LinkedList()
-        current_self = self.head
-        current_other = other_list.head
+    def sort_list(self):
+        if self.head is None or self.head.next is None:
+            return
 
-        while current_self and current_other:
-            if current_self.data < current_other.data:
-                merged_list.insert_at_end(current_self.data)
-                current_self = current_self.next
+        sorted_head = None
+        current = self.head
+
+        while current is not None:
+            next_node = current.next
+            sorted_head = self.sorted_insert(sorted_head, current)
+            current = next_node
+
+        self.head = sorted_head
+
+    def sorted_insert(self, sorted_head, new_node):
+        if sorted_head is None or sorted_head.data >= new_node.data:
+            new_node.next = sorted_head
+            return new_node
+
+        current = sorted_head
+        while current.next is not None and current.next.data < new_node.data:
+            current = current.next
+
+        new_node.next = current.next
+        current.next = new_node
+
+        return sorted_head
+
+    def merge_sorted_lists(list1, list2):
+        new_list = LinkedList()
+        current_list1 = list1.head
+        current_list2 = list2.head
+
+        while current_list1 is not None and current_list2 is not None:
+            if current_list1.data < current_list2.data:
+                new_list.insert_at_end(current_list1.data)
+                current_list1 = current_list1.next
             else:
-                merged_list.insert_at_end(current_other.data)
-                current_other = current_other.next
+                new_list.insert_at_end(current_list2.data)
+                current_list2 = current_list2.next
 
-        while current_self:
-            merged_list.insert_at_end(current_self.data)
-            current_self = current_self.next
+        while current_list1 is not None:
+            new_list.insert_at_end(current_list1.data)
+            current_list1 = current_list1.next
 
-        while current_other:
-            merged_list.insert_at_end(current_other.data)
-            current_other = current_other.next
+        while current_list2 is not None:
+            new_list.insert_at_end(current_list2.data)
+            current_list2 = current_list2.next
 
-        return merged_list
+        return new_list
 
 
 def main():
@@ -123,11 +154,15 @@ def main():
     llist2.insert_at_end(7)
     llist2.insert_at_end(12)
     llist2.insert_at_end(18)
-    print("\nДругий зв'язний список:")
+    print("\nДругий зв'язаний список:")
     llist2.print_list()
 
+    llist.sort_list()
+    print("\nВідсортований перший список:")
+    llist.print_list()
+
     merged_list = llist.merge_sorted_lists(llist2)
-    print("\nВідсортований об'єднаний список:")
+    print("\nОб'єднаний та відсортований список:")
     merged_list.print_list()
 
 
@@ -135,6 +170,7 @@ if __name__ == "__main__":
     main()
 
 
+# Виконуємо додавання елементів до зв'язного списку:
 # Зв'язний список:
 # 15
 # 10
@@ -157,16 +193,22 @@ if __name__ == "__main__":
 # 5
 # 15
 
-# Другий зв'язний список:
+# Другий зв'язаний список:
 # 7
 # 12
 # 18
 
-# Відсортований об'єднаний список:
-# 7
-# 12
-# 18
-# 25
-# 20
+# Відсортований перший список:
 # 5
 # 15
+# 20
+# 25
+
+# Об'єднаний та відсортований список:
+# 5
+# 7
+# 12
+# 15
+# 18
+# 20
+# 25
